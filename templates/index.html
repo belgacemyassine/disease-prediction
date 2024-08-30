@@ -1,0 +1,301 @@
+{% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endif %}   
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>Classification De Maladie</title>
+    <link rel="icon" type="image/x-icon" href="static/images/logo1.png">    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/04f0945a9c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    
+</head>
+<body>
+
+
+    <!--Start Section Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div style="display: flex;
+                    margin-right: 700px;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index" style="color: white; font-size: 32px;">Accueil</a>
+                        </li>
+  
+                        {% block y %}
+  
+                        {% if session.username %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="color: white; font-size: 32px;">
+                                Prédiction
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="indexDiabete">Diabète</a>
+                                <a class="dropdown-item" href="indexbreastcancer">Cancer du sein</a>
+                                <a class="dropdown-item" href="indexBreastimage">Cancer du sein image</a>
+                                <a class="dropdown-item" href="indexDerma">Maladie Dermique</a>
+                                <a class="dropdown-item" href="IndexTumeur">Tumeur</a>
+                                <a class="dropdown-item" href="indexHeart">Cardiopathies</a>
+                                <a class="dropdown-item" href="indexFormulaire">Maladie du rein</a>
+                                <a class="dropdown-item" href="indexLiver">Maladie Du Foie</a>
+                                <a class="dropdown-item" href="malaria">Paludisme</a>
+                                <a class="dropdown-item" href="pneumonia">Pneumonie</a>
+                            </div>
+                        </li>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout" style="color: white; font-size: 30px;">Se déconnecter</a>
+                    </li>
+  
+  
+                     {% else  %}
+                  <div style=" display:flex;     margin-left: 698px;">
+                      <li class="nav-item">
+                          <a class="nav-link" href="login"  style="color: white; font-size: 32px;">Connexion</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="register"  style="color: white; font-size: 32px;">S'inscrire</a>
+                      </li>
+                  </div>
+  
+  {% endif %} 
+  {% endblock %}
+  
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="predictor" style="margin-top: 41px;">
+        <h2 class="title-predictor text-center">Système De Classification Des Maladies</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="static/images/img2.webp" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/img3.jpeg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/dia2 (1).jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/c2.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/l1.webp" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/h3.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/img2.webp" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/m1.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/t1.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="static/images/p1.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-predictor">
+                        <p class="desc-predictor">
+                            <h2>Une solution de soins de santé en ligne pour fournir des résultats cliniques à tout moment.</h2>
+                                <p>En cette période de pandémie, les gens préfèrent être soignés à domicile et s'assurer d'éviter autant que possible les lieux contaminés tels que les hôpitaux et les cliniques. Notre projet vise à fournir une plate-forme conviviale pour valider les résultats à la volée, diffuser la sensibilisation générale et fournir des mesures de précaution. </p>
+           
+                            
+                       
+                        <ul class="list-predictor">
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                               <a href="indexDiabete" style="text-decoration: none;
+                               color: #464444;"> Diabète</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexBreastimage" style="text-decoration: none;
+                               color: #464444;">Cancer Du Sein Image</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexHeart" style="text-decoration: none;
+                               color: #464444;">Cardiopathies</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexDerma" style="text-decoration: none;
+                               color: #464444;">Maladie Dermique</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="IndexTumeur" style="text-decoration: none;
+                               color: #464444;">Tumeur</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexMalaria" style="text-decoration: none;
+                               color: #464444;">Paludisme</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexPneumonia" style="text-decoration: none;
+                               color: #464444;">Pneumonie</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexLiver" style="text-decoration: none;
+                               color: #464444;">Maladie Du Foie</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexFormulaire" style="text-decoration: none;
+                                color: #464444;"> Maladie Du Rein</a>
+                            </li>
+                            <li>
+                                <img src="{{url_for('static', filename='images/check.svg')}}" alt="">
+                                <a href="indexbreastcancer" style="text-decoration: none;
+                               color: #464444;">Cancer Du Sein</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--apex-->
+    <div id="chart"><script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    </div>
+
+
+    
+    
+  
+  </div>
+  </main>    
+
+  
+  <script>var options = {
+    series: [{
+    name: 'Inflation',
+    data: [77, 88, 87, 70, 78, 96, 95, 100, 100, 98]
+  }],
+    chart: {
+    height: 350,
+    type: 'bar',
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      dataLabels: {
+        position: 'top', // top, center, bottom
+      },
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    formatter: function (val) {
+      return val + "%";
+    },
+    offsetY: -20,
+    style: {
+      fontSize: '12px',
+      colors: ["#304758"]
+    }
+  },
+  
+  xaxis: {
+    categories: ["Diabète", "Cancer Du Sein Image", "Cardiopathies", "Maladie Dermique", "Tumeur", "Paludisme", "Pneumonie", "Maladie Du Foie", "Maladie Du Rein", "Cancer Du Sein"],
+    position: 'top',
+    axisBorder: {
+      show: false
+    },
+    axisTicks: {
+      show: false
+    },
+    crosshairs: {
+      fill: {
+        type: 'gradient',
+        gradient: {
+          colorFrom: '#D8E3F0',
+          colorTo: '#BED1E6',
+          stops: [0, 100],
+          opacityFrom: 0.4,
+          opacityTo: 0.5,
+        }
+      }
+    },
+    tooltip: {
+      enabled: true,
+    }
+  },
+  yaxis: {
+    axisBorder: {
+      show: false
+    },
+    axisTicks: {
+      show: false,
+    },
+    labels: {
+      show: false,
+      formatter: function (val) {
+        return val + "%";
+      }
+    }
+  
+  },
+  title: {
+    text: 'Précisions Des Modèles :',
+    floating: true,
+    offsetY: 330,
+    align: 'center',
+    style: {
+      color: '#444'
+    }
+  }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
+</script>
+
+</body>
+</html>
